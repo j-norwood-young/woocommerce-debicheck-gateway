@@ -36,7 +36,6 @@ function woocommerce_debicheck_plugin_links( $links ) {
 	$plugin_links = array(
 		'<a href="' . esc_url( $settings_url ) . '">' . __( 'Settings', 'woocommerce-gateway-debicheck' ) . '</a>'
 	);
-
 	return array_merge( $plugin_links, $links );
 }
 add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'woocommerce_debicheck_plugin_links' );

@@ -41,6 +41,7 @@ class WC_Gateway_DebiCheck extends WC_Payment_Gateway {
 	 * @since 0.0.1
 	 */
 	public function init_form_fields() {
+		// TODO: String(s) to identify the mandate on the debtor's account
 		$this->form_fields = array(
 			'enabled' => array(
 				'title'       => __( 'Enable/Disable', 'woocommerce-gateway-debicheck' ),
@@ -51,17 +52,82 @@ class WC_Gateway_DebiCheck extends WC_Payment_Gateway {
 				'desc_tip'    => true,
 			),
 			'url' => array(
-				'title'       => __( 'E-Mandate URL', 'woocommerce-gateway-debicheck' ),
+				'title'       => __( 'DebiCheck API', 'woocommerce-gateway-debicheck' ),
 				'type'        => 'text',
-				'description' => __( 'URL to the E-Mandate platform.', 'woocommerce-gateway-debicheck' ),
-				'default'     => __( 'https://www.electronicmandate.com/organisation', 'woocommerce-gateway-debicheck' ),
-				'desc_tip'    => true,
+				'description' => __( 'Eg. https://fintecapisandbox.azurewebsites.net/api.', 'woocommerce-gateway-debicheck' ),
+				'default'     => __( 'https://fintecapisandbox.azurewebsites.net/api', 'woocommerce-gateway-debicheck' ),
+				'desc_tip'    => false,
+			),
+			'apikey' => array(
+				'title'       => __( 'API Key', 'woocommerce-gateway-debicheck' ),
+				'type'        => 'password',
+				'description' => __( 'API Key for the E-Mandate platform.', 'woocommerce-gateway-debicheck' ),
+				'default'     => "",
+				'desc_tip'    => false,
 			),
 			'enable_logging' => array(
 				'title'   => __( 'Enable Logging', 'woocommerce-gateway-debicheck' ),
 				'type'    => 'checkbox',
 				'label'   => __( 'Enable transaction logging for gateway.', 'woocommerce-gateway-debicheck' ),
 				'default' => 'no',
+			),
+			'tracking_allowed' => array(
+				'title'   => __( 'Enable Tracking', 'woocommerce-gateway-debicheck' ),
+				'type'    => 'checkbox',
+				'label'   => 'Enable Tracking',
+				'description'   => __( 'NOTE: This will most likely result in a higher cost per transaction.', 'woocommerce-gateway-debicheck' ),
+				'default' => 'no',
+				'desc_tip'    => false,
+			),
+			'tracking_days' => array(
+				'title'       => __( 'Tracking Days', 'woocommerce-gateway-debicheck' ),
+				'type'        => 'number',
+				'description' => __( 'Number of days to retry if not enough funds available.', 'woocommerce-gateway-debicheck.' ),
+				'default'     => __( '2' ),
+				'desc_tip'    => true,
+			),
+			'currency' => array(
+				'title'       => __( 'Currency', 'woocommerce-gateway-debicheck' ),
+				'type'        => 'text',
+				'description' => __( 'Currency to perform transactions in.' ),
+				'default'     => __( 'ZAR' ),
+				'desc_tip'    => false,
+			),
+			// 'mandate_identification' => array(
+			// 	'title'       => __( 'Creditor Account Number', 'woocommerce-gateway-debicheck' ),
+			// 	'type'        => 'text',
+			// ),
+			'creditor_account_number' => array(
+				'title'       => __( 'Creditor Account Number', 'woocommerce-gateway-debicheck' ),
+				'type'        => 'text',
+			),
+			'creditor_account_name' => array(
+				'title'       => __( 'Creditor Account Name', 'woocommerce-gateway-debicheck' ),
+				'type'        => 'text',
+			),
+			'creditor_branch_code' => array(
+				'title'       => __( 'Creditor Branch Code', 'woocommerce-gateway-debicheck' ),
+				'type'        => 'text',
+			),
+			'creditor_email' => array(
+				'title'       => __( 'Creditor Email', 'woocommerce-gateway-debicheck' ),
+				'type'        => 'email',
+			),
+			'creditor_phone_number' => array(
+				'title'       => __( 'Creditor Phone Number', 'woocommerce-gateway-debicheck' ),
+				'type'        => 'text',
+			),
+			'creditor_scheme_name' => array(
+				'title'       => __( 'Scheme Name', 'woocommerce-gateway-debicheck' ),
+				'type'        => 'text',
+			),
+			'creditor_shotr_name' => array(
+				'title'       => __( 'Creditor Short Name', 'woocommerce-gateway-debicheck' ),
+				'type'        => 'text',
+			),
+			'creditor_ultimate_name' => array(
+				'title'       => __( 'Creditor Ultimate Name', 'woocommerce-gateway-debicheck' ),
+				'type'        => 'text',
 			),
 		);
     }
