@@ -86,6 +86,12 @@ class WC_Gateway_DebiCheck extends WC_Payment_Gateway {
 				'default'     => __( '2' ),
 				'desc_tip'    => true,
 			),
+			'bank' => array(
+				'title'       => __( 'Bank', 'woocommerce-gateway-debicheck' ),
+				'type'        => 'text',
+				'description' => __( 'Eg. ABSA' ),
+				'desc_tip'    => false,
+			),
 			'currency' => array(
 				'title'       => __( 'Currency', 'woocommerce-gateway-debicheck' ),
 				'type'        => 'text',
@@ -121,7 +127,7 @@ class WC_Gateway_DebiCheck extends WC_Payment_Gateway {
 				'title'       => __( 'Scheme Name', 'woocommerce-gateway-debicheck' ),
 				'type'        => 'text',
 			),
-			'creditor_shotr_name' => array(
+			'creditor_short_name' => array(
 				'title'       => __( 'Creditor Short Name', 'woocommerce-gateway-debicheck' ),
 				'type'        => 'text',
 			),

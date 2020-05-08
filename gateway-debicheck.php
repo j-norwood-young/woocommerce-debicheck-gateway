@@ -48,3 +48,10 @@ function woocommerce_debicheck_add_gateway( $methods ) {
 	$methods[] = 'WC_Gateway_DebiCheck';
 	return $methods;
 }
+
+// Shortcodes
+function debicheck_form_shortcode($atts) {
+	require(plugin_basename("templates/debicheck-form-shortcode.php"));
+}
+
+add_shortcode( 'debicheck-form', 'debicheck_form_shortcode' );
